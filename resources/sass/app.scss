@@ -1,0 +1,326 @@
+/**
+ * Variables
+ */
+
+// Dimensional
+$lrg-width: 800px;
+$med-width: 600px;
+$small-width: 400px;
+
+$handwritten-font-stack: Satisfy, 'Lucida Handwriting', Roboto, Helvetica, Arial, sans-serif;
+$default-font-stack: Roboto, Helvetica, Arial, sans-serif;
+
+// Colors
+
+
+/**
+ * Style Definitions
+ */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-family: $default-font-stack;
+    color: #212121;
+    outline: none;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+.italic { font-style: italic; }
+
+*::selection { background-color: rgba(27, 38, 59, 0.75); color: #fff; }
+
+#gray-cover {
+	visibility: visible;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#drawer-container {
+	position: fixed;
+	width: 0;
+	height: 100%;
+	background-color: #F3F4F5;
+	box-shadow: 1px 2px 10px -3px rgb(27, 38, 59);
+	overflow: hidden;
+	z-index: 2;
+
+	#drawer-top-bar {
+		background-color: #1B263B;
+		width: 100%;
+		display: flex;
+
+		#close-drawer {
+			padding: 0.5em 0 0.5em 1em;
+			color: #fff;
+			fill: currentColor;
+			cursor: pointer;
+			width: 2em;
+			min-width: 2em;
+			align-items: center;
+		}
+	}
+
+	#drawer-content {
+		#drawer-nav {
+			display: flex;
+			flex-direction: column;
+
+			a {
+				padding: 1em 0 1em 1em;
+				text-decoration: none;
+				color: #212121;
+				transition: 0.2s;
+				background-color: rgba(0, 0, 0, 0);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+                outline: none;
+
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.1);
+				}
+			}
+		}
+	}
+}
+
+#nav-container {
+	background-color: rgb(27, 38, 59);
+	display: flex;
+
+	#open-drawer {
+		padding: 0.5em 0 0.5em 1em;
+		color: #fff;
+		fill: currentColor;
+		width: 2em;
+		min-width: 2em;
+		float: left;
+		cursor: pointer;
+		align-items: center;
+		display: initial;
+
+		@media (min-width: ($small-width * 1.1)) {
+			display: none;
+		}
+	}
+
+	#inner-nav-container {
+		display: flex;
+		flex-grow: 1;
+		justify-content: center;
+		transition: 0.2s;
+
+		#name-logo {
+            margin-right: 4dp;
+			font-family: $handwritten-font-stack;
+			font-size: 1.5em;
+			color: #fff;
+			text-decoration: none;
+			transition: 0.2s;
+			padding: 0.25em 1em;
+			word-break: keep-all;
+            outline: none;
+
+			&:hover { color: #ccc; }
+		}
+	}
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		transition: 0.2s;
+
+		a {
+			font-size: 1em;
+			display: flex;
+			padding: 0 2em;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			border-bottom: 0.2em solid transparent;
+			color: #fff;
+			transition: 0.2s;
+            text-shadow: #333 0px 0px 6px;
+            outline: none;
+
+			&:hover { border-bottom: 0.2em solid rgb(255, 255, 255); }
+			&:active, &:focus, &.active { background-color: rgba(0, 0, 0, 0.35); }
+
+			@media (min-width: ($small-width * 1.1)) {
+				padding: 0 0.5em;
+			}
+
+			@media (min-width: ($med-width * 1.2)) {
+				padding: 0 1.25em;
+			}
+
+			@media (min-width: ($lrg-width * 1.3)) {
+				padding: 0 2em;
+			}
+		}
+
+		@media (max-width: ($small-width * 1.1)) {
+			display: none
+		}
+	}
+}
+
+#content-container {
+	margin: 0 auto;
+	transition: 0.2s;
+
+	@media (min-width: ($small-width * 1.1)) {
+		width: $small-width;
+	}
+
+	@media (min-width: ($med-width * 1.2)) {
+		width: $med-width;
+	}
+
+	@media (min-width: ($lrg-width * 1.3)) {
+		width: $lrg-width;
+	}
+	
+	#content {
+		padding: 1em 1.5em 10em 1.5em;
+		line-height: 1.75em;
+		letter-spacing: 0.005em;
+
+		h3 > span {
+			color: #969dac;
+		}
+
+		img.profile-picture { 
+			width: 150px;
+			max-width: 33%;
+			border-radius: 50%;
+			margin: 0 20px 3px 0;
+			float: left;
+			box-shadow: 1px 2px 10px -3px rgb(27, 38, 59);
+		}
+
+		.page-banner {
+			height: 175px;
+			overflow: hidden;
+			margin-bottom: 25px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+            position: relative;
+            border-radius: 1em 1em 1em 0;
+			box-shadow: 1px 2px 10px -3px #1b263b;
+
+			&.lake-monroe { background-image: url('/images/lake-monroe.jpg'); }
+			&.vratsa-1 { background-image: url('/images/vratsa-1.jpg'); }
+			&.vratsa-2 { background-image: url('/images/vratsa-2.jpg'); }
+			&.vratsa-3 { background-image: url('/images/vratsa-3.jpg'); }
+            &.vratsa-4 { background-image: url('/images/vratsa-4.jpg'); }
+            &.rappel { background-image: url('/images/rappel.jpg'); }
+            &.chapel { background-image: url('/images/chapel.jpg'); }
+		
+			p {
+				padding: 7px 10px 7px 7px;
+				margin: 0;
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				line-height: 1em;
+				background-color: darken(rgba(27, 38, 59, 0.7), 35%);
+				color: #FFF;
+				font-size: 12px;
+				border-top-right-radius: 10px;
+			}
+		}
+
+		.indented {
+			margin-left: 1em;
+			transition: 0.2s;
+
+			@media (min-width: ($small-width * 1.1)) {
+				margin-left: 2em;
+			}
+		}
+
+		.project-thumb {
+			float: right;
+			width: 200px;
+			max-width: 33%;
+			margin-left: 10px;
+			box-shadow: 1px 2px 10px -3px rgb(27, 38, 59);
+		}
+
+		.sign-off {
+			text-align: right;
+			margin-right: 3em;
+			font-family: $handwritten-font-stack;
+			font-size: 1.5em;
+		}
+
+		a {
+			color: #4968A0;
+			transition: 0.2s;
+
+			&:hover { color: lighten(#4968A0, 20%); }
+			&:visited { color: #8C5383; }
+			&:visited:hover {color: lighten(#8C5383, 20%); }
+		}
+
+		.notice {
+			padding: 1em;
+			background-color: lighten(#4968A0, 40%);
+			box-shadow: 1px 2px 10px -3px rgb(27, 38, 59);
+            border-radius: 1em 1em 1em 0;
+
+			span {
+				font-weight: 700;
+			}
+		}
+
+		#contact-form {
+			margin: 1em 0 1em 0;
+			width: 100%;
+
+			input, textarea {
+				padding: 0.25em 0.5em;
+				border-radius: 0.4em;
+				border: 1px solid #969dac;
+				outline: 0;
+				transition: 0.2s;
+				&:focus { box-shadow: 1px 2px 10px -3px rgb(27, 38, 59); }
+			}
+
+			td:first-child {
+				width: 6em;
+			}
+
+			textarea {
+				width: 100%;
+				min-height: 5em;
+				max-width: 25em;
+				font-family: $default-font-stack;
+			}
+
+			@media (min-width: ($small-width * 1.1)) {
+				margin-left: 1em;
+			}
+
+			@media (min-width: ($med-width * 1.2)) {
+				margin-left: 2.5em;
+			}
+
+			@media (min-width: ($lrg-width * 1.3)) {
+				margin-left: 5em;
+			}
+		}
+	}
+}

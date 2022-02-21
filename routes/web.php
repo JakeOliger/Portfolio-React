@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// This is a single page app so we'll just route anything to home.
+Route::get('/{any}', function() {return view('home');})->where('any', '.*');
